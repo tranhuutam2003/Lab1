@@ -1,0 +1,44 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+}
+
+@model IEnumerable<Course>
+<div class="ms-2 mx-2">
+    <h1>Course List</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>CourseID</th>
+                <th>Title</th>
+                <th>Credits</th>
+                <th>Ngành</th>
+                <th>Enrollment</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                @foreach (var s in Model)
+                {
+                    <tr>
+                        <td>@s.CourseId</td>
+                        <td>@s.Title</td>
+                        <td>@s.Credits</td>
+                        <td>@s.Enrollments</td>
+                        
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@s.CourseId">Edit</a>|
+                            <a asp-action="Delete" asp-route-id="@s.CourseId">Delete</a>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <p>No learners available.</p>
+            }
+        </tbody>
+    </table>
+    <a action="Create" class="btn btn-primary">Create New Student</a>
+</div>
