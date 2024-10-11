@@ -12,7 +12,7 @@ namespace Lab1.ViewComponents
                 new MenuItem(){Id = 1, Name = "Branches", Link="Branches/List"},
                 new MenuItem(){Id = 2, Name = "Student", Link="Admin/Student/List" },
                 new MenuItem(){Id = 3, Name = "Subject", Link="Subject/List" },
-                new MenuItem(){Id = 4, Name = "Coures", Link="Coures/List" }
+                new MenuItem(){Id = 4, Name = "Course", Link="Coures/List" }
             };
         }
 

@@ -1,0 +1,36 @@
+﻿@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+}
+
+@model Course
+<div class="ms-2 mx-2">
+    <h1>Edit</h1>
+    <div asp-validation-sumary="All" class="text-danger"></div>
+    <form asp-controller="Course" asp-action="Edit" aasp-route-id="@Model.CourseId" method="post" class="mt-3">
+        <input type="hidden" asp-for="CourseId" />
+        <div style="margin-top:7px" class="form-group row">
+            <label asp-for="Title" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+                <input asp-for="Title" class="form-control" placeholder="Title Name" />
+            </div>
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+
+        <div style="margin-top:7px" class="form-group row">
+            <label asp-for="Credits" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+                <input asp-for="Credits" class="form-control" placeholder="Credits" />
+            </div>
+            <span asp-validation-for="Credits" class="text-danger"></span>
+        </div>
+
+
+
+        <div style="margin-top:10px" class="form-group row">
+            <div class="col-sm-10">
+                <button type="submit" class="btn btn-primary">Edit</button>
+            </div>
+        </div>
+    </form>
+</div>

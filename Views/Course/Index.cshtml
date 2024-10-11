@@ -13,7 +13,6 @@
                 <th>Title</th>
                 <th>Credits</th>
                 <th>Ngành</th>
-                <th>Enrollment</th>
             </tr>
         </thead>
         <tbody>
@@ -25,7 +24,7 @@
                         <td>@s.CourseId</td>
                         <td>@s.Title</td>
                         <td>@s.Credits</td>
-                        <td>@s.Enrollments</td>
+                      
                         
                         <td>
                             <a asp-action="Edit" asp-route-id="@s.CourseId">Edit</a>|
@@ -40,5 +39,5 @@
             }
         </tbody>
     </table>
-    <a action="Create" class="btn btn-primary">Create New Student</a>
+    <a asp-controller="Course" action="Create" class="btn btn-primary">Create New Course</a>
 </div>

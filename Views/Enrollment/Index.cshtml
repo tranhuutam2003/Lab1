@@ -1,0 +1,45 @@
+﻿@{
+    ViewData["Title"] = "Enrollment List";
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+}
+
+@model IEnumerable<Enrollment>
+<div class="ms-2 mx-2">
+    <h1>Enrollment List</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Enrollment ID</th>
+                <th>Learner Name</th>
+                <th>Course Title</th>
+                <th>Grade</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                @foreach (var enrollment in Model)
+                {
+                    <tr>
+                        <td>@enrollment.EnrollmentID</td>
+                        <td>@enrollment.Learner.FirstMidName @enrollment.Learner.LastName</td>
+                        <td>@enrollment.Course.Title</td>
+                        <td>@enrollment.Grade</td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@enrollment.EnrollmentID">Edit</a> |
+                            <a asp-action="Delete" asp-route-id="@enrollment.EnrollmentID">Delete</a>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="5">No enrollments available.</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a asp-action="Create" class="btn btn-primary">Create New Enrollment</a>
+</div>
