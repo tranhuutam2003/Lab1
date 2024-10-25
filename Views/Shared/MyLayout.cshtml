@@ -17,7 +17,7 @@
     <div id="layoutSidenav">
         <!-- Begin Left menu -->
         <div id="layoutSidenav_nav">
-            @await Component.InvokeAsync("Render");
+            @await Component.InvokeAsync("Render"); 
         </div>
         <!-- End Left menu -->
         <!-- Begin Right content -->
@@ -33,6 +33,7 @@
         <!-- End Right content -->
     </div>
     <script src="~/js/scripts.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
     @RenderSection("Scripts", required: false);
 </body>
 </html>

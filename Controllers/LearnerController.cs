@@ -13,24 +13,22 @@ namespace Lab1.Controllers
         {
             db = context;
         }
-        public IActionResult Index()
+        public IActionResult Index(int? mid)
         {
-            var learners = db.Learners.Include(m => m.Major).ToList();
-            return View(learners);
+            if(mid == null)
+            {
+                var learners = db.Learners.Include(m=>m.Major).ToList();
+                return View(learners);
+            }
+            else
+            {
+                var learners = db.Learners.Where(l=>l.MajorID== mid).Include(m=>m.Major).ToList();
+                return View(learners);
+            }
         }
 
         public IActionResult Create()
         {
-            //var majors = new List<SelectListItem>();
-            //foreach(var item in db.Majors)
-            //{
-            //    majors.Add(new SelectListItem
-            //    {
-            //        Text = item.MajorName,
-            //        Value = item.MajorID.ToString()
-            //    });
-            //}
-            //ViewBag.MajorID = majors;0
             ViewBag.MajorID = new SelectList(db.Majors, "MajorID", "MajorName");
             return View();
         }
@@ -95,6 +93,14 @@ namespace Lab1.Controllers
             }
             ViewBag.MajorId=new SelectList(db.Majors,"MajorID","MajorName",learner.MajorID);
             return View(learner);
+        }
+
+        public IActionResult LearnerByMajorID(int mid)
+        {
+            var learners = db.Learners
+                .Where(l=>l.MajorID == mid)
+                .Include(m=>m.Major).ToList();
+            return PartialView("LearnerTable",learners);
         }
         private bool LearnerExists(int id)
         {
